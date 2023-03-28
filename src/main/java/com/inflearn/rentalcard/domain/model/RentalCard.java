@@ -1,6 +1,7 @@
-package com.inflearn.rentalcard.domain;
+package com.inflearn.rentalcard.domain.model;
 
-import com.inflearn.rentalcard.domain.vo.*;
+import com.inflearn.rentalcard.domain.model.vo.*;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -47,7 +48,8 @@ public class RentalCard {
     public RentalCard overdueItem(Item item){
         RentItem rentedItem = this.rentItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
         rentedItem.setOverdued(true);
-        rentedItem.setOverdueDate(LocalDate.of(2022,10,20));
+        //rentedItem.setOverdueDate(LocalDate.of(2022,10,20));
+        rentedItem.setOverdueDate(LocalDate.now().minusDays(1));
         //this.totalLateFee.addPoint(10);
         this.rentStatus = RentStatus.RENT_UNAVAILABLE;
         return this;

@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.domain.vo;
+package com.inflearn.rentalcard.domain.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

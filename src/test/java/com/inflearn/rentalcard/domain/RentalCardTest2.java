@@ -1,7 +1,9 @@
 package com.inflearn.rentalcard.domain;
+import com.inflearn.rentalcard.domain.model.RentalCard;
+import com.inflearn.rentalcard.domain.model.vo.IDName;
+import com.inflearn.rentalcard.domain.model.vo.Item;
 import com.inflearn.rentalcard.domain.repository.RentalCardRepository;
 import com.inflearn.rentalcard.domain.vo.*;
-import org.assertj.core.api.ListAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -37,7 +41,7 @@ public class RentalCardTest2 {
 
 
         rentalCard.rentItem(Item.sample());
-        rentalCard.returnItem(Item.sample());
+        rentalCard.returnItem(Item.sample(), LocalDate.now());
 
         System.out.println(rentalCard);
 

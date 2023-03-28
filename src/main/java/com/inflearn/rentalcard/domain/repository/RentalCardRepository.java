@@ -1,8 +1,8 @@
 package com.inflearn.rentalcard.domain.repository;
 
-import com.inflearn.rentalcard.domain.RentalCard;
-import com.inflearn.rentalcard.domain.vo.IDName;
-import com.inflearn.rentalcard.domain.vo.rentalCardNo;
+import com.inflearn.rentalcard.domain.model.RentalCard;
+import com.inflearn.rentalcard.domain.model.vo.IDName;
+import com.inflearn.rentalcard.domain.model.vo.rentalCardNo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
