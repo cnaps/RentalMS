@@ -3,7 +3,6 @@ import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;
 import com.inflearn.rentalcard.domain.model.vo.Item;
 import com.inflearn.rentalcard.domain.repository.RentalCardRepository;
-import com.inflearn.rentalcard.domain.vo.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
