@@ -28,7 +28,7 @@ public class rentalCardNo implements Serializable {
     }
 
     public static rentalCardNo sample(){
-        return new rentalCardNo("2022-00001");
+        return new rentalCardNo("2023-00001");
     }
 
     public static void main(String[] args) {

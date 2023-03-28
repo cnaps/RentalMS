@@ -1,6 +1,5 @@
 package com.inflearn.rentalcard.domain.vo;
 
-import com.inflearn.rentalcard.domain.vo.RentalItem;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,14 +15,14 @@ import java.time.LocalDate;
 @Getter @Setter
 public class ReturnItem {
     @Embedded
-    private RentalItem item;
+    private RentItem item;
     private LocalDate returnDate;
 
     public static ReturnItem sample(){
-        return new ReturnItem(RentalItem.sample(),LocalDate.now());
+        return new ReturnItem(RentItem.sample(),LocalDate.now());
     }
 
-    public static ReturnItem createRetunItem(RentalItem rentalItem){
-        return new ReturnItem(rentalItem,LocalDate.now());
+    public static ReturnItem createRetunItem(RentItem rentItem){
+        return new ReturnItem(rentItem,LocalDate.now());
     }
 }

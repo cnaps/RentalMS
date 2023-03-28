@@ -1,6 +1,6 @@
 package com.inflearn.rentalcard.domain.vo;
 
-public enum RentalStatus {
+public enum RentStatus {
     RENT_AVAILABLE,
     RENT_UNAVAILABLE
 }

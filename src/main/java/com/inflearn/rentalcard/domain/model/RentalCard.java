@@ -18,64 +18,60 @@ public class RentalCard {
 
     @EmbeddedId
     private rentalCardNo rentalCardId;
-
     @Embedded
     private IDName member;
-    private RentalStatus rentalStatus;
+    private RentStatus rentStatus;
     @Embedded
     private LateFee totalLateFee;
 
-
     @ElementCollection
-    private List<RentalItem> rentalItemList = new ArrayList<RentalItem>();
-
+    private List<RentItem> rentItemList = new ArrayList<RentItem>();
     @ElementCollection
     private List<ReturnItem> returnItemList = new ArrayList<ReturnItem>();
 
-
     public RentalCard rentItem(Item item) throws Exception {
         checkRentalAvailable();
-        this.addRentalItem(RentalItem.createRentalItem(item));
+        this.addRentalItem(RentItem.createRentalItem(item));
         return this;
     }
 
 
-    public RentalCard returnItem(Item item) throws Exception {
-        RentalItem rentedItem = this.rentalItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
-        calculateLateFee(rentedItem);
+    public RentalCard returnItem(Item item,LocalDate returnDate) throws Exception {
+        RentItem rentedItem = this.rentItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
+        calculateLateFee(rentedItem,returnDate);
         this.addReturnItem(ReturnItem.createRetunItem(rentedItem));
         this.removeRentalItem(rentedItem);
         return this;
     }
 
     public RentalCard overdueItem(Item item){
-        RentalItem rentedItem = this.rentalItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
+        RentItem rentedItem = this.rentItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
         rentedItem.setOverdued(true);
-        rentedItem.setOverdueStartDate(LocalDate.of(2022,10,20));
+        rentedItem.setOverdueDate(LocalDate.of(2022,10,20));
         //this.totalLateFee.addPoint(10);
-        this.rentalStatus = RentalStatus.RENT_UNAVAILABLE;
+        this.rentStatus = RentStatus.RENT_UNAVAILABLE;
         return this;
     }
 
     private void checkRentalAvailable() throws Exception {
-        if (this.rentalStatus == RentalStatus.RENT_UNAVAILABLE) throw new Exception("대출 불가 상태입니다.");
-        if ((long) this.rentalItemList.size() > 5) throw new Exception("이미 5권 대출하였습니다.");
+        if (this.rentStatus == RentStatus.RENT_UNAVAILABLE) throw new IllegalStateException("대출 불가 상태입니다.");
+        if ((long) this.rentItemList.size() > 5) throw new Exception("이미 5권 대출하였습니다.");
     }
 
-    private RentalCard calculateLateFee(RentalItem item){
+    private RentalCard calculateLateFee(RentItem item, LocalDate returnDate){
         final Integer[] point = {this.totalLateFee.getPoint()};
-        point[0] += Period.between(item.getOverdueStartDate(),LocalDate.now()).getDays() * 10 ;
+        point[0] += Period.between(item.getOverdueDate(),returnDate).getDays() * 10 ;
         this.totalLateFee.addPoint(point[0]);
         return this;
     }
     public RentalCard calculateLateFee(){
         final Integer[] point = {this.totalLateFee.getPoint()};
-        this.rentalItemList.forEach(new Consumer<RentalItem>() {
+        this.rentItemList.forEach(new Consumer<RentItem>() {
                                         @Override
-                                        public void accept(RentalItem rentalItem) {
-                                           if(rentalItem.getOverdueStartDate() != null)
+                                        public void accept(RentItem rentItem) {
+                                           if(rentItem.getOverdueDate() != null)
                                            {
-                                              point[0] += Period.between(rentalItem.getOverdueStartDate(),LocalDate.now()).getDays() * 10 ;
+                                              point[0] += Period.between(rentItem.getOverdueDate(),LocalDate.now()).getDays() * 10 ;
                                            }
                                         }
                                     }
@@ -87,14 +83,14 @@ public class RentalCard {
 
     public RentalCard makeAvailableRental(Integer point) throws Exception {
         // 연체비 계산하기
-        if ((long) this.rentalItemList.size() != 0) throw new Exception("모든 도서가 반납된 후 정지를 해제할 수 있습니다.");
+        if ((long) this.rentItemList.size() != 0) throw new IllegalStateException("모든 도서가 반납된 후 정지를 해제할 수 있습니다.");
         Integer lateFee = this.totalLateFee.getPoint();
-        if (lateFee > point) throw new Exception("연체료가 더 커서 해당 포인트로 삭감할수 없습니다.");
+        if (lateFee > point) throw new IllegalStateException("연체료가 더 커서 해당 포인트로 삭감할수 없습니다.");
         lateFee = lateFee - point;
         this.totalLateFee.addPoint(lateFee);
         if (lateFee == 0 )
         {
-            this.rentalStatus = RentalStatus.RENT_AVAILABLE;
+            this.rentStatus = RentStatus.RENT_AVAILABLE;
         }
         return this;
     }
@@ -103,23 +99,23 @@ public class RentalCard {
 //
 //    }
 
-    public void addRentalItem(RentalItem rentalItem){
-        this.getRentalItemList().add(rentalItem);
+    public void addRentalItem(RentItem rentItem){
+        this.getRentItemList().add(rentItem);
     }
 
     public void addReturnItem(ReturnItem returnItem){
         this.getReturnItemList().add(returnItem);
     }
 
-    public void removeRentalItem(RentalItem rentalItem)
+    public void removeRentalItem(RentItem rentItem)
     {
-        this.getRentalItemList().remove(rentalItem);
+        this.getRentItemList().remove(rentItem);
     }
     public static RentalCard sample(){
         RentalCard rentalCard = new RentalCard();
         rentalCard.setRentalCardId(rentalCardNo.createRentalCardNo());
         rentalCard.setMember(IDName.sample());
-        rentalCard.setRentalStatus(RentalStatus.RENT_AVAILABLE);
+        rentalCard.setRentStatus(RentStatus.RENT_AVAILABLE);
         rentalCard.setTotalLateFee(LateFee.sample());
         //rentalCard.getRentalItemList().add(RentalItem.sample());
 
