@@ -30,6 +30,16 @@ public class RentalCard {
     @ElementCollection
     private List<ReturnItem> returnItemList = new ArrayList<ReturnItem>();
 
+    public static RentalCard createRentalCard(IDName creater)
+    {
+        RentalCard rentalCard = new RentalCard();
+        rentalCard.setRentalCardId(rentalCardNo.createRentalCardNo());
+        rentalCard.setMember(creater);
+        rentalCard.setRentStatus(RentStatus.RENT_AVAILABLE);
+        rentalCard.setTotalLateFee(new LateFee());
+        return rentalCard; 
+    }
+
     public RentalCard rentItem(Item item) throws Exception {
         checkRentalAvailable();
         this.addRentalItem(RentItem.createRentalItem(item));
