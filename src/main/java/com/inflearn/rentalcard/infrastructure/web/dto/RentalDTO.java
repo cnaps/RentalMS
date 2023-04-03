@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RentalDto {
+public class RentalDTO {
     public Item rentItem;
     public IDName rentalUser;
 

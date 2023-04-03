@@ -15,4 +15,6 @@ public interface RentalCardRepository extends JpaRepository<RentalCard, rentalCa
     Optional<RentalCard> findByMemberId(@Param("id") String memberID);
 
     Optional<RentalCard> findByMember(IDName member);
+
+    Optional<RentalCard> findById(Long rentalCardId);
 }
