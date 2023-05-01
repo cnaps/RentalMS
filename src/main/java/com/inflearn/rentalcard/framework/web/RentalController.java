@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.infrastructure.web;
+package com.inflearn.rentalcard.framework.web;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inflearn.rentalcard.application.service.RentItemService;
-import com.inflearn.rentalcard.infrastructure.web.dto.RentalDTO;
+import com.inflearn.rentalcard.application.inputPort.RentItemService;
+import com.inflearn.rentalcard.framework.web.dto.RentalInputDTO;
 
 
 @RestController

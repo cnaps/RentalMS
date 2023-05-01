@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.application.service;
+package com.inflearn.rentalcard.application.inputPort;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;
 import com.inflearn.rentalcard.domain.model.vo.Item;
-import com.inflearn.rentalcard.domain.repository.RentalCardRepository;
-import com.inflearn.rentalcard.infrastructure.web.dto.RentalDTO;
+import com.inflearn.rentalcard.framework.jpaAdapter.RentalCardRepository;
+import com.inflearn.rentalcard.framework.web.dto.RentalInputDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -51,7 +51,7 @@ public class RentItemService {
         return rentalCardRepository.save(RentalCard.createRentalCard(creator));
     }
 
-    public RentalDTO rentItem(Long rentalCardId, RentalDTO rentalDTO) throws Exception {
+    public RentalInputDTO rentItem(Long rentalCardId, RentalInputDTO rentalDTO) throws Exception {
         RentalCard rentalCard = rentalCardRepository.findById(rentalCardId).orElseThrow(() -> new IllegalArgumentException("해당 대출 카드가 존재하지 않습니다."));
         rentalCard.rentItem(rentalDTO.getRentItem());
         rentalCardRepository.save(rentalCard);
@@ -59,7 +59,7 @@ public class RentItemService {
        return null;
     }
 
-    public RentalCard returnItem(Long rentalCardId, RentalDTO rentalDTO) throws Exception {
+    public RentalCard returnItem(Long rentalCardId, RentalInputDTO rentalDTO) throws Exception {
         RentalCard rentalCard = rentalCardRepository.findById(rentalCardId).orElseThrow(() -> new IllegalArgumentException("해당 대출 카드가 존재하지 않습니다."));
         rentalCard.returnItem(rentalDTO.getRentItem(), LocalDate.now());
         rentalCardRepository.save(rentalCard);
