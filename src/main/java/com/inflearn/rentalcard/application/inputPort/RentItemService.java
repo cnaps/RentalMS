@@ -1,17 +1,19 @@
-package com.inflearn.rentalcard.application.inputPort;
+package com.inflearn.rentalcard.application.service;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.inflearn.rentalcard.domain.model.vo.RentItem;
+import com.inflearn.rentalcard.infrastructure.web.dto.RentResultDTO;
 import org.springframework.stereotype.Service;
 
 import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;
 import com.inflearn.rentalcard.domain.model.vo.Item;
-import com.inflearn.rentalcard.framework.jpaAdapter.RentalCardRepository;
-import com.inflearn.rentalcard.framework.web.dto.RentalInputDTO;
+import com.inflearn.rentalcard.domain.repository.RentalCardRepository;
+import com.inflearn.rentalcard.infrastructure.web.dto.RentItemDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -51,15 +53,14 @@ public class RentItemService {
         return rentalCardRepository.save(RentalCard.createRentalCard(creator));
     }
 
-    public RentalInputDTO rentItem(Long rentalCardId, RentalInputDTO rentalDTO) throws Exception {
-        RentalCard rentalCard = rentalCardRepository.findById(rentalCardId).orElseThrow(() -> new IllegalArgumentException("해당 대출 카드가 존재하지 않습니다."));
+        public RentResultDTO rentItem(RentItemDTO rentalDTO) throws Exception {
+        RentalCard rentalCard = rentalCardRepository.findByMember(rentalDTO.getRentalUser()).orElseThrow(() -> new IllegalArgumentException("해당 대출 카드가 존재하지 않습니다."));
         rentalCard.rentItem(rentalDTO.getRentItem());
         rentalCardRepository.save(rentalCard);
-       // return rentalCard;
-       return null;
+       return RentResultDTO.fromEntity(rentalCard);
     }
 
-    public RentalCard returnItem(Long rentalCardId, RentalInputDTO rentalDTO) throws Exception {
+    public RentalCard returnItem(Long rentalCardId, RentItemDTO rentalDTO) throws Exception {
         RentalCard rentalCard = rentalCardRepository.findById(rentalCardId).orElseThrow(() -> new IllegalArgumentException("해당 대출 카드가 존재하지 않습니다."));
         rentalCard.returnItem(rentalDTO.getRentItem(), LocalDate.now());
         rentalCardRepository.save(rentalCard);
