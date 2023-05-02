@@ -6,14 +6,12 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.inflearn.rentalcard.domain.model.vo.RentItem;
-import com.inflearn.rentalcard.infrastructure.web.dto.RentResultDTO;
 import org.springframework.stereotype.Service;
 
 import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;
 import com.inflearn.rentalcard.domain.model.vo.Item;
 import com.inflearn.rentalcard.domain.repository.RentalCardRepository;
-import com.inflearn.rentalcard.infrastructure.web.dto.RentItemDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -52,7 +50,7 @@ public class RentItemService {
     public RentalCard createRentalCard(IDName creator) {
         return rentalCardRepository.save(RentalCard.createRentalCard(creator));
     }
-
+/*
         public RentResultDTO rentItem(RentItemDTO rentalDTO) throws Exception {
         RentalCard rentalCard = rentalCardRepository.findByMember(rentalDTO.getRentalUser()).orElseThrow(() -> new IllegalArgumentException("해당 대출 카드가 존재하지 않습니다."));
         rentalCard.rentItem(rentalDTO.getRentItem());
@@ -94,6 +92,8 @@ public class RentItemService {
     public void deleteRentalCard(Long rentalCardId) {
         RentalCard rentalCard = rentalCardRepository.findById(rentalCardId).orElseThrow(() -> new IllegalArgumentException("해당 대출 카드가"));
     }
+
+ */
 }
 
 

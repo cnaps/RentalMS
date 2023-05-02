@@ -19,7 +19,7 @@ public class RentItemInputPort implements RentItemUsecase{
 
     private final RentalCardOuputPort rentalCardOuputPort;
     @Override
-    public RentalResultOuputDTO rentItem(RentalInputDTO rental) {
+    public RentalResultOuputDTO rentItem(RentalInputDTO rental) throws Exception {
         // Outport를 사용해서 해당 사용자의 RentalCard 검색해서
         // 없으면 만들고
         // 있으면 대여한뒤
@@ -30,7 +30,7 @@ public class RentItemInputPort implements RentItemUsecase{
         {
             userRentalCard = RentalCard.createRentalCard(new IDName(rental.getUserId(),rental.getUserNm()));
         }
-        userRentalCard.rentItem(new Item(rental.getItemId(),rental.getItemTitle());
+        userRentalCard.rentItem(new Item(rental.getItemId(),rental.getItemTitle()));
 
         userRentalCard = rentalCardOuputPort.save(userRentalCard);
 

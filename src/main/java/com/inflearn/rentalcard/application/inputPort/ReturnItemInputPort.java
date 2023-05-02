@@ -20,12 +20,12 @@ public class ReturnItemInputPort implements ReturnItemUsercase{
     private final RentalCardOuputPort rentalCardOuputPort;
 
     @Override
-    public RentalResultOuputDTO returnItem(RentalInputDTO returnDto) {
+    public RentalResultOuputDTO returnItem(RentalInputDTO returnDto) throws Exception {
         // OutputPort를 사용해서 rental를 검색한 후 
         // 없으면 에러
         // 있으면 도서 반납
         // OutputPort에 저장 
-        RentalCard rental = rentalCardOuputPort.loadRentalCard(returnDto.getUserId())
+        RentalCard rental = rentalCardOuputPort.loadRentalCard(returnDto.getUserId());
         
         if (rental == null) new IllegalArgumentException("해당 카드가 존재하지 않습니다.");
 

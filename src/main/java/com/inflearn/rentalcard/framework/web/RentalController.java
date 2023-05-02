@@ -1,7 +1,7 @@
 package com.inflearn.rentalcard.infrastructure.web;
 
 import com.inflearn.rentalcard.domain.model.RentalCard;
-import com.inflearn.rentalcard.infrastructure.web.dto.RentResultDTO;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inflearn.rentalcard.application.service.RentItemService;
-import com.inflearn.rentalcard.infrastructure.web.dto.RentItemDTO;
+
 
 
 @RestController
@@ -23,7 +23,8 @@ public class RentalController {
     public RentalController(RentItemService rentItemService) {
         this.rentItemService = rentItemService;
     }
- 
+
+    /*
      @PostMapping("/rent")
      public ResponseEntity<RentResultDTO> rentItem(@RequestBody RentItemDTO rentItemDTO) throws Exception {
          RentResultDTO resultDTO = rentItemService.rentItem(rentItemDTO);
@@ -81,4 +82,6 @@ public class RentalController {
         rentItemService.deleteRentalCard(id);
         return ResponseEntity.noContent().build();
     }
+
+     */
 }

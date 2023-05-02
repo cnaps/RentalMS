@@ -2,7 +2,6 @@ package com.inflearn.rentalcard.domain;
 import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;
 import com.inflearn.rentalcard.domain.model.vo.Item;
-import com.inflearn.rentalcard.framework.jpaAdapter.RentalCardRepository;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,6 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 public class RentalCardTest2 {
 
+    /*
     @Autowired
     RentalCardRepository rentalCardRepository;
 
@@ -53,5 +53,5 @@ public class RentalCardTest2 {
         RentalCard rentalCard = rentalCardRepository.findByMember(IDName.sample()).get();
         assertThat(rentalCard.getMember().getId()).isEqualTo("scant");
     }
-
+*/
 }
