@@ -1,7 +1,12 @@
 package com.inflearn.rentalcard.infrastructure.web;
 
+import com.inflearn.rentalcard.application.usecase.RentItemUsecase;
+import com.inflearn.rentalcard.application.usecase.ReturnItemUsercase;
 import com.inflearn.rentalcard.domain.model.RentalCard;
 
+import com.inflearn.rentalcard.framework.web.dto.RentalInputDTO;
+import com.inflearn.rentalcard.framework.web.dto.RentalResultOuputDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,27 +20,28 @@ import com.inflearn.rentalcard.application.service.RentItemService;
 
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/rentalCards")
 public class RentalController {
  
-    private final RentItemService rentItemService;
+    private final RentItemUsecase rentItemUsecase;
+    private final ReturnItemUsercase returnItemUsercase;
 
-    public RentalController(RentItemService rentItemService) {
-        this.rentItemService = rentItemService;
-    }
 
-    /*
      @PostMapping("/rent")
-     public ResponseEntity<RentResultDTO> rentItem(@RequestBody RentItemDTO rentItemDTO) throws Exception {
-         RentResultDTO resultDTO = rentItemService.rentItem(rentItemDTO);
+     public ResponseEntity<RentalResultOuputDTO> rentItem(@RequestBody RentalInputDTO rentalInputDTO) throws Exception {
+         RentalResultOuputDTO resultDTO= rentItemUsecase.rentItem(rentalInputDTO);
          return ResponseEntity.ok(resultDTO);
      }
-    
-    // @PostMapping("/return")
-    // public RentalDTO returnItem(@RequestBody RentalDTO rentalCardDto) {
-    //     return rentItemService.returnItem(rentalCardDto);
-    // }
-    
+
+
+     @PostMapping("/return")
+     public ResponseEntity<RentalResultOuputDTO> returnItem(@RequestBody RentalInputDTO rentalInputDTO) throws Exception {
+         RentalResultOuputDTO rentalResultOuputDTO = returnItemUsercase.returnItem(rentalInputDTO);
+         return ResponseEntity.ok(rentalResultOuputDTO);
+     }
+
+    /*
     // @PostMapping("/overdue")
     // public RentalDTO overdueItem(@RequestBody RentalDTO rentalCardDto) {
     //     return rentItemService.overdueItem(rentalCardDto);

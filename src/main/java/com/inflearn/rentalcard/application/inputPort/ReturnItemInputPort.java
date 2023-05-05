@@ -12,6 +12,8 @@ import com.inflearn.rentalcard.framework.web.dto.RentalResultOuputDTO;
 
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
+
 @RequiredArgsConstructor
 @Service
 @Transactional
@@ -29,7 +31,7 @@ public class ReturnItemInputPort implements ReturnItemUsercase{
         
         if (rental == null) new IllegalArgumentException("해당 카드가 존재하지 않습니다.");
 
-        rental = rental.rentItem(new Item(returnDto.getItemId(),returnDto.getItemTitle()));
+        rental = rental.returnItem(new Item(returnDto.getItemId(),returnDto.getItemTitle()), LocalDate.now());
 
         rental = rentalCardOuputPort.save(rental);
 
