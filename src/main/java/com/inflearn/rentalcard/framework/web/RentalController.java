@@ -47,17 +47,8 @@ public class RentalController {
     //     return rentItemService.overdueItem(rentalCardDto);
     // }
 
-    @PostMapping("/return")
-    public void returnItem(RentalDTO rentalCardDto) {
-        RentalCard rentalCard = rentItemService.returnItem(rentalCardDto);
 
-        )
-    }
-    public void overdueItem(RentalDTO rentalCardDto) {
-        RentalCard rentalCard = rentItemService.overdueItem(rentalCardDto);
 
-        )
-    }
      @PostMapping
      public ResponseEntity<RentalDTO> createRentalCard(@RequestBody RentalDTO rentalCardDTO) {
          RentalDTO createdRentalCard = rentItemService.createRentalCard(rentalCardDTO);

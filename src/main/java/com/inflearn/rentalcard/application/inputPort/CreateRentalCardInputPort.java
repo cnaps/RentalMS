@@ -10,6 +10,8 @@ import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class CreateRentalCardInputPort implements CreateRentalCardUsecase{
 
     @Override
     public RentalCard createRentalCard(IDName owner) {
-        return rentalCardOuputPort.save(RentalCard.createRentalCard(owner));
+        return rentalCardOuputPort.save(Optional.of(RentalCard.createRentalCard(owner)));
     }
     
 }

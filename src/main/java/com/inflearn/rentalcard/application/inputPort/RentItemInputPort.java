@@ -12,6 +12,8 @@ import com.inflearn.rentalcard.framework.web.dto.RentalInputDTO;
 import com.inflearn.rentalcard.framework.web.dto.RentalResultOuputDTO;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -24,15 +26,15 @@ public class RentItemInputPort implements RentItemUsecase{
         // 없으면 만들고
         // 있으면 대여한뒤
         // Outport를 사용해서 저장한다.
-        RentalCard userRentalCard = rentalCardOuputPort.loadRentalCard(rental.getUserId());
+        Optional<RentalCard> userRentalCard = rentalCardOuputPort.loadRentalCard(rental.getUserId());
         
         if (userRentalCard == null)
         {
-            userRentalCard = RentalCard.createRentalCard(new IDName(rental.getUserId(),rental.getUserNm()));
+            userRentalCard = Optional.of(RentalCard.createRentalCard(new IDName(rental.getUserId(), rental.getUserNm())));
         }
-        userRentalCard.rentItem(new Item(rental.getItemId(),rental.getItemTitle()));
+        userRentalCard.get().rentItem(new Item(rental.getItemId(),rental.getItemTitle()));
 
-        userRentalCard = rentalCardOuputPort.save(userRentalCard);
+        userRentalCard = Optional.ofNullable(rentalCardOuputPort.save(userRentalCard));
 
         return RentalResultOuputDTO.mapToDTO(userRentalCard);
 
