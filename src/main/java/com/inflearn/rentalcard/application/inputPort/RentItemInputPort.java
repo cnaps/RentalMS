@@ -26,15 +26,15 @@ public class RentItemInputPort implements RentItemUsecase{
         // 없으면 만들고
         // 있으면 대여한뒤
         // Outport를 사용해서 저장한다.
-        Optional<RentalCard> userRentalCard = rentalCardOuputPort.loadRentalCard(rental.getUserId());
+        RentalCard userRentalCard = rentalCardOuputPort.loadRentalCard(rental.getUserId());
         
         if (userRentalCard == null)
         {
-            userRentalCard = Optional.of(RentalCard.createRentalCard(new IDName(rental.getUserId(), rental.getUserNm())));
+            userRentalCard = RentalCard.createRentalCard(new IDName(rental.getUserId(), rental.getUserNm()));
         }
-        userRentalCard.get().rentItem(new Item(rental.getItemId(),rental.getItemTitle()));
+        userRentalCard.rentItem(new Item(rental.getItemId(),rental.getItemTitle()));
 
-        userRentalCard = Optional.ofNullable(rentalCardOuputPort.save(userRentalCard));
+        userRentalCard = rentalCardOuputPort.save(userRentalCard);
 
         return RentalResultOuputDTO.mapToDTO(userRentalCard);
 

@@ -14,10 +14,10 @@ public class RentalResultOuputDTO {
     public Integer rentedCount;
     public long totalLateFee;
 
-    public static RentalResultOuputDTO mapToDTO(Optional<RentalCard> rental){
+    public static RentalResultOuputDTO mapToDTO(RentalCard rental){
         RentalResultOuputDTO rentDTO = new RentalResultOuputDTO();
-        rentDTO.setUserId(rental.get().getId());
-        rentDTO.setUserNm(rental.get().getName());
+        rentDTO.setUserId(rental.getMember().getId());
+        rentDTO.setUserNm(rental.getMember().getName());
         rentDTO.setRentedCount(rental.getRentItemList().size());
         rentDTO.setTotalLateFee(rental.getTotalLateFee().getPoint());
         return rentDTO;

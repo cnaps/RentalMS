@@ -21,7 +21,7 @@ public class CreateRentalCardInputPort implements CreateRentalCardUsecase{
 
     @Override
     public RentalCard createRentalCard(IDName owner) {
-        return rentalCardOuputPort.save(Optional.of(RentalCard.createRentalCard(owner)));
+        return rentalCardOuputPort.save(RentalCard.createRentalCard(owner));
     }
     
 }

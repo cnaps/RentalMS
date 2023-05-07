@@ -19,9 +19,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 public class RentalCardTest2 {
 
-    /*
+
     @Autowired
-    RentalCardRepository rentalCardRepository;
+    com.inflearn.rentalcard.domain.repository.RentalCardRepository rentalCardRepository;
 
     @Before
     public void setUp() {
@@ -53,5 +53,4 @@ public class RentalCardTest2 {
         RentalCard rentalCard = rentalCardRepository.findByMember(IDName.sample()).get();
         assertThat(rentalCard.getMember().getId()).isEqualTo("scant");
     }
-*/
 }
