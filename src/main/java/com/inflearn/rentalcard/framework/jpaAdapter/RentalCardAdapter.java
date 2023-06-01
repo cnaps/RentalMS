@@ -11,7 +11,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RentalCardAdapter implements RentalCardOuputPort {
 
-    private final com.inflearn.rentalcard.domain.repository.RentalCardRepository rentalCardRepository;
+    private final RentalCardRepository rentalCardRepository;
     @Override
     public RentalCard loadRentalCard(String userId) {
         return rentalCardRepository.findByMemberId(userId).get();

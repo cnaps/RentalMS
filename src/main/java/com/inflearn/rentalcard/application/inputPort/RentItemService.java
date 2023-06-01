@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.application.service;
+package com.infleßarn.rentalcard.application.inputPort;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,12 +6,12 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.inflearn.rentalcard.domain.model.vo.RentItem;
+import com.inflearn.rentalcard.framework.jpaAdapter.RentalCardRepository;
 import org.springframework.stereotype.Service;
 
 import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;
 import com.inflearn.rentalcard.domain.model.vo.Item;
-import com.inflearn.rentalcard.domain.repository.RentalCardRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -47,7 +47,7 @@ public class RentItemService {
 
     private final RentalCardRepository rentalCardRepository;
 
-    public RentalCard createRentalCard(IDName creator) {
+    public RentalCard createRenßtalCard(IDName creator) {
         return rentalCardRepository.save(RentalCard.createRentalCard(creator));
     }
 /*

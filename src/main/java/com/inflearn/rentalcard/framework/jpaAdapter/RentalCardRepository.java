@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.domain.repository;
+package com.inflearn.rentalcard.framework.jpaAdapter;
 
 import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;

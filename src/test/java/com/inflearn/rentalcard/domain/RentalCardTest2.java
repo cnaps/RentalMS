@@ -3,6 +3,7 @@ import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;
 import com.inflearn.rentalcard.domain.model.vo.Item;
 
+import com.inflearn.rentalcard.framework.jpaAdapter.RentalCardRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,7 @@ public class RentalCardTest2 {
 
 
     @Autowired
-    com.inflearn.rentalcard.domain.repository.RentalCardRepository rentalCardRepository;
+    RentalCardRepository rentalCardRepository;
 
     @Before
     public void setUp() {

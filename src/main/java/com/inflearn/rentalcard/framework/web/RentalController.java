@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.infrastructure.web;
+package com.inflearn.rentalcard.framework.web;
 
 import com.inflearn.rentalcard.application.usecase.RentItemUsecase;
 import com.inflearn.rentalcard.application.usecase.ReturnItemUsercase;
@@ -6,6 +6,8 @@ import com.inflearn.rentalcard.domain.model.RentalCard;
 
 import com.inflearn.rentalcard.framework.web.dto.RentalInputDTO;
 import com.inflearn.rentalcard.framework.web.dto.RentalResultOuputDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,20 +17,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inflearn.rentalcard.application.service.RentItemService;
 
 
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/rentalCards")
+@RequestMapping("/api")
+@Api(tags = {"대여 Controller"})
 public class RentalController {
  
     private final RentItemUsecase rentItemUsecase;
     private final ReturnItemUsercase returnItemUsercase;
 
+    @ApiOperation(value = "도서카드 생성")
+    public void createRentalCard() {}
+    @ApiOperation(value = "도서카드 조회",notes = "사용자id로 도서카드 조회")
+    public  void findRentalCard(){}
 
-     @PostMapping("/rent")
+    @ApiOperation(value = "대여도서목록 조회",notes = "도서카드 id로 대여도서목록 조회")
+    public void findRentedItemList(){}
+
+    @ApiOperation(value = "반납도서목록 조회",notes = "도서카드 id로 반납도서목록 조회")
+    public void findReturnItemList(){}
+
+    @ApiOperation(value = "대여기능",notes = "사용자가 도서정보와 사용자정도로 대여")
+    @PostMapping("/rent")
      public ResponseEntity<RentalResultOuputDTO> rentItem(@RequestBody RentalInputDTO rentalInputDTO) throws Exception {
          RentalResultOuputDTO resultDTO= rentItemUsecase.rentItem(rentalInputDTO);
          return ResponseEntity.ok(resultDTO);
