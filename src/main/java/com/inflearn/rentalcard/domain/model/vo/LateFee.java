@@ -30,4 +30,11 @@ public class LateFee {
     public static LateFee sample(){
         return new LateFee(0);
     }
+
+    public static LateFee createLateFee()
+    {
+        LateFee lateFee = new LateFee();
+        lateFee.point = 0;
+        return lateFee;
+    }
 }
