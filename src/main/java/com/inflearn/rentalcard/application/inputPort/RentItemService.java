@@ -1,4 +1,4 @@
-package com.infleßarn.rentalcard.application.inputPort;
+package com.inflearn.rentalcard.application.inputPort;
 
 import java.time.LocalDate;
 import java.util.List;
