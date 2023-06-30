@@ -1,7 +1,7 @@
 # RentalMS
 - 어플리케이션 빌드
-  
-  `mvn clean package`
+
+  ``` mvn clean package ```
   
 - Dockerfile 생성
   - 이미 존재함
@@ -21,11 +21,11 @@
 
 - 도커 컨테이너 이미지 생성
 
-  `docker build -t my-spring-boot-app .`
+  ``` docker build -t my-spring-boot-app . ```
 
-  `docker image`
+  ``` docker image ```
 
 - 도커 컨테이너 실행
 
-  `docker run -8080:8080 my-spring-boot-app` 
+  ``` docker run -8080:8080 my-spring-boot-app ``` 
 
