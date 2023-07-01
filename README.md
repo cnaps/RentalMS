@@ -29,3 +29,4 @@
 
   ``` docker run -8080:8080 my-spring-boot-app ``` 
 
+<img width="838" alt="image" src="https://github.com/cnaps/RentalMS/assets/15258916/ab18e473-3691-4624-8b27-b3fc8cc79569">
