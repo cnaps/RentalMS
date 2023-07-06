@@ -34,18 +34,26 @@
 - 빌드
   - 어플리케이션 빌드
   
-    ``` mvn clean package ```
+    ```
+    mvn clean package 
+    ```
 
 - 컨테이너 생성
   - 도커 컨테이너 이미지 생성
   
-     ``` docker build -t my-spring-boot-app . ```
+    ```
+     docker build -t my-spring-boot-app . 
+    ```
 
-     ``` docker image ```
+    ```
+    docker image 
+    ```
 
   - 도커 컨테이너 실행
 
-     ``` docker run -8080:8080 my-spring-boot-app ```
+    ``` 
+    docker run -8080:8080 my-spring-boot-app 
+    ```
 
 - 카프카 컨테이너 생성
 - 토픽 생성
