@@ -14,18 +14,16 @@ import javax.persistence.Embeddable;
 public class LateFee {
     private Integer point;
 
-    public Integer addPoint(Integer lateFee)
+    public LateFee addPoint(Integer lateFee)
     {
-        this.point = this.point + lateFee;
-        return point;
+        return new LateFee(this.point + lateFee);
     }
 
-    public Integer removePoint(Integer lateFee) throws Exception {
+    public LateFee removePoint(Integer lateFee) throws Exception {
         if (lateFee > this.point) {
             throw new Exception("기존 가진 point보다 작어 삭제할 수 없습니다.");
         }
-        this.point = this.point - lateFee;
-        return point;
+        return new LateFee(this.point - lateFee);
     }
     public static LateFee sample(){
         return new LateFee(0);

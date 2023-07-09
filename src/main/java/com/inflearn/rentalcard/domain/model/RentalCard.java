@@ -73,7 +73,8 @@ public class RentalCard {
     private RentalCard calculateLateFee(RentItem item, LocalDate returnDate){
         final Integer[] point = {this.totalLateFee.getPoint()};
         point[0] += Period.between(item.getOverdueDate(),returnDate).getDays() * 10 ;
-        this.totalLateFee.addPoint(point[0]);
+        LateFee lateFee = this.totalLateFee.addPoint(point[0]);
+        this.setTotalLateFee(lateFee);
         return this;
     }
     public RentalCard calculateLateFee(){
@@ -89,7 +90,8 @@ public class RentalCard {
                                     }
 
         );
-        this.totalLateFee.addPoint(point[0]);
+        LateFee lateFee = this.totalLateFee.addPoint(point[0]);
+        this.setTotalLateFee(lateFee);
         return this;
     }
 
@@ -99,11 +101,13 @@ public class RentalCard {
         Integer lateFee = this.totalLateFee.getPoint();
         if (lateFee > point) throw new IllegalStateException("연체료가 더 커서 해당 포인트로 삭감할수 없습니다.");
         lateFee = lateFee - point;
-        this.totalLateFee.addPoint(lateFee);
+        LateFee total = this.totalLateFee.addPoint(lateFee);
+
         if (lateFee == 0 )
         {
             this.rentStatus = RentStatus.RENT_AVAILABLE;
         }
+        this.setTotalLateFee(total);
         return this;
     }
 
