@@ -18,7 +18,7 @@ public class RentalEventConsumers {
 
     public static final String TOPIC = "topic_kafka";
 
-    @KafkaListener(topics = "exam", groupId = "foo")
+    @KafkaListener(topics = "exam")
     public void consume(String message) throws IOException {
         System.out.printf("Consumed message : %s%n", message);
     }
