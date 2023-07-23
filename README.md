@@ -65,4 +65,4 @@
 
 
 - 전체 구현 아키텍처구성도
-  ![image](https://github.com/cnaps/RentalMS/assets/15258916/f2b9082e-2633-4642-856c-5fe5ade9c8ae)
+  ![image](https://github.com/cnaps/RentalMS/assets/15258916/46713f64-951f-45b6-a04c-9c6ffbeb3d6c)
