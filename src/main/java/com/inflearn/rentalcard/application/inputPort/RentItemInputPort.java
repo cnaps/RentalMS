@@ -1,5 +1,7 @@
 package com.inflearn.rentalcard.application.inputPort;
 
+import com.inflearn.rentalcard.application.ouputPort.ItemRentedOuputPort;
+import com.inflearn.rentalcard.domain.model.event.ItemRented;
 import com.inflearn.rentalcard.framework.web.dto.RentalCardOutputDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class RentItemInputPort implements RentItemUsecase{
 
     private final RentalCardOuputPort rentalCardOuputPort;
+    private final ItemRentedOuputPort rentedOuputPort;
     @Override
     public RentalCardOutputDTO rentItem(UserItemInputDTO rental) throws Exception {
         // Outport를 사용해서 해당 사용자의 RentalCard 검색해서
@@ -31,9 +34,13 @@ public class RentItemInputPort implements RentItemUsecase{
         {
             userRentalCard = RentalCard.createRentalCard(new IDName(rental.getUserId(), rental.getUserNm()));
         }
-        userRentalCard.rentItem(new Item(rental.getItemId(),rental.getItemTitle()));
+
+        Item newItem = new Item(rental.getItemId(), rental.getItemTitle());
+        userRentalCard.rentItem(newItem);
 
         userRentalCard = rentalCardOuputPort.save(userRentalCard);
+
+        rentedOuputPort.occurEvent(new ItemRented(userRentalCard.getMember(),newItem,10L));
 
         return RentalCardOutputDTO.mapToDTO(userRentalCard);
 
