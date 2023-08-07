@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 public class RentalCard {
 
     @EmbeddedId
-    private rentalCardNo rentalCardId;
+    private RentalCardNo rentalCardId;
     @Embedded
     private IDName member;
     private RentStatus rentStatus;
@@ -33,7 +33,7 @@ public class RentalCard {
     public static RentalCard createRentalCard(IDName creater)
     {
         RentalCard rentalCard = new RentalCard();
-        rentalCard.setRentalCardId(rentalCardNo.createRentalCardNo());
+        rentalCard.setRentalCardId(RentalCardNo.createRentalCardNo());
         rentalCard.setMember(creater);
         rentalCard.setRentStatus(RentStatus.RENT_AVAILABLE);
         rentalCard.setTotalLateFee(LateFee.createLateFee());
@@ -129,7 +129,7 @@ public class RentalCard {
     }
     public static RentalCard sample(){
         RentalCard rentalCard = new RentalCard();
-        rentalCard.setRentalCardId(rentalCardNo.createRentalCardNo());
+        rentalCard.setRentalCardId(RentalCardNo.createRentalCardNo());
         rentalCard.setMember(IDName.sample());
         rentalCard.setRentStatus(RentStatus.RENT_AVAILABLE);
         rentalCard.setTotalLateFee(LateFee.sample());

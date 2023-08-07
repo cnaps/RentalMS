@@ -13,22 +13,22 @@ import java.util.UUID;
 @NoArgsConstructor
 @Embeddable
 @Data
-public class rentalCardNo implements Serializable {
+public class RentalCardNo implements Serializable {
 
     private String no;
 
     static UUID uuid = UUID.randomUUID();
 
-    public static rentalCardNo createRentalCardNo(){
+    public static RentalCardNo createRentalCardNo(){
         String year = String.valueOf(LocalDate.now().getYear());
         String str = year + '-' +uuid.toString();
-        rentalCardNo rentalCardNo1 = new rentalCardNo();
+        RentalCardNo rentalCardNo1 = new RentalCardNo();
         rentalCardNo1.setNo(str);
         return rentalCardNo1;
     }
 
-    public static rentalCardNo sample(){
-        return new rentalCardNo("2023-00001");
+    public static RentalCardNo sample(){
+        return new RentalCardNo("2023-00001");
     }
 
     public static void main(String[] args) {
