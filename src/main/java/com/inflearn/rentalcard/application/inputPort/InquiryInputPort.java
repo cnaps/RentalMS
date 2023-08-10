@@ -1,10 +1,8 @@
 package com.inflearn.rentalcard.application.inputPort;
 
-import com.inflearn.rentalcard.application.ouputPort.RentalCardOuputPort;
+import com.inflearn.rentalcard.application.outputPort.RentalCardOuputPort;
 import com.inflearn.rentalcard.application.usecase.InquiryUsecase;
 import com.inflearn.rentalcard.domain.model.RentalCard;
-import com.inflearn.rentalcard.domain.model.vo.RentItem;
-import com.inflearn.rentalcard.domain.model.vo.ReturnItem;
 import com.inflearn.rentalcard.framework.web.dto.RentItemOutputDTO;
 import com.inflearn.rentalcard.framework.web.dto.RentalCardOutputDTO;
 import com.inflearn.rentalcard.framework.web.dto.RetrunItemOupputDTO;

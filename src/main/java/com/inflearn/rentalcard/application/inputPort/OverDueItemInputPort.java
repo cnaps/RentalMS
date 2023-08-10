@@ -1,6 +1,6 @@
 package com.inflearn.rentalcard.application.inputPort;
 
-import com.inflearn.rentalcard.application.ouputPort.RentalCardOuputPort;
+import com.inflearn.rentalcard.application.outputPort.RentalCardOuputPort;
 import com.inflearn.rentalcard.application.usecase.OverdueItemUsercase;
 import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.Item;
@@ -9,8 +9,6 @@ import com.inflearn.rentalcard.framework.web.dto.UserItemInputDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
 
 
 @Service

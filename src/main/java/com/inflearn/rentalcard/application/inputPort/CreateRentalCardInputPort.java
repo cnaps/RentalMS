@@ -6,7 +6,7 @@ import com.inflearn.rentalcard.framework.web.dto.RentalCardOutputDTO;
 import com.inflearn.rentalcard.framework.web.dto.UserInputDTO;
 import org.springframework.stereotype.Service;
 
-import com.inflearn.rentalcard.application.ouputPort.RentalCardOuputPort;
+import com.inflearn.rentalcard.application.outputPort.RentalCardOuputPort;
 import com.inflearn.rentalcard.application.usecase.CreateRentalCardUsecase;
 import com.inflearn.rentalcard.domain.model.RentalCard;
 import com.inflearn.rentalcard.domain.model.vo.IDName;

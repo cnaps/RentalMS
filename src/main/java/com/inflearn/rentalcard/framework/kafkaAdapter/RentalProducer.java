@@ -1,8 +1,7 @@
 package com.inflearn.rentalcard.framework.kafkaAdapter;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.inflearn.rentalcard.application.ouputPort.ItemRentedOuputPort;
+import com.inflearn.rentalcard.application.outputPort.ItemRentedOuputPort;
 import com.inflearn.rentalcard.domain.model.event.ItemRented;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -36,7 +35,5 @@ public class RentalProducer implements ItemRentedOuputPort {
  //       String msg = objectMapper.writeValueAsString(rentalItemEvent);
         this.kafkaTemplate.send(TOPIC, rentalItemEvent);
     }
-
-
 
 }

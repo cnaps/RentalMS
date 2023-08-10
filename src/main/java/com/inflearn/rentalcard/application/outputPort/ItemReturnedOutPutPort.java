@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.application.ouputPort;
+package com.inflearn.rentalcard.application.outputPort;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.inflearn.rentalcard.domain.model.event.ItemReturned;
