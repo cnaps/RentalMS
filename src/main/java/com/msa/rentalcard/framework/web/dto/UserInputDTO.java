@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.framework.web.dto;
+package com.msa.rentalcard.framework.web.dto;
 
 
 import lombok.AllArgsConstructor;

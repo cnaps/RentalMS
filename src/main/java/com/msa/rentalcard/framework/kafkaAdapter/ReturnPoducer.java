@@ -1,9 +1,9 @@
-package com.inflearn.rentalcard.framework.kafkaAdapter;
+package com.msa.rentalcard.framework.kafkaAdapter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.inflearn.rentalcard.application.outputPort.ItemReturnedOutPutPort;
-import com.inflearn.rentalcard.domain.model.event.ItemReturned;
+import com.msa.rentalcard.application.outputPort.ItemReturnedOutPutPort;
+import com.msa.rentalcard.domain.model.event.ItemReturned;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.slf4j.Logger;

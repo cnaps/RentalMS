@@ -1,7 +1,6 @@
-package com.inflearn.rentalcard.domain.model;
+package com.msa.rentalcard.domain.model;
 
-import com.inflearn.rentalcard.domain.model.vo.*;
-
+import com.msa.rentalcard.domain.model.vo.*;
 import lombok.*;
 
 import javax.persistence.*;

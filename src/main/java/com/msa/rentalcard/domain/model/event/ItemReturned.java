@@ -1,11 +1,8 @@
-package com.inflearn.rentalcard.domain.model.event;
+package com.msa.rentalcard.domain.model.event;
 
-import com.inflearn.rentalcard.domain.model.vo.IDName;
-import com.inflearn.rentalcard.domain.model.vo.Item;
+import com.msa.rentalcard.domain.model.vo.IDName;
+import com.msa.rentalcard.domain.model.vo.Item;
 import lombok.AllArgsConstructor;
-
-import java.awt.*;
-import java.io.Serializable;
 
 
 @AllArgsConstructor

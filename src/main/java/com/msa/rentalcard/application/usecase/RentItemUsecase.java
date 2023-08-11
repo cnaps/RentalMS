@@ -1,8 +1,7 @@
-package com.inflearn.rentalcard.application.usecase;
+package com.msa.rentalcard.application.usecase;
 
-import com.inflearn.rentalcard.framework.web.dto.RentalCardOutputDTO;
-import com.inflearn.rentalcard.framework.web.dto.UserItemInputDTO;
-import com.inflearn.rentalcard.framework.web.dto.RentalResultOuputDTO;
+import com.msa.rentalcard.framework.web.dto.RentalCardOutputDTO;
+import com.msa.rentalcard.framework.web.dto.UserItemInputDTO;
 
 public interface RentItemUsecase {
     public RentalCardOutputDTO rentItem(UserItemInputDTO rental) throws Exception;

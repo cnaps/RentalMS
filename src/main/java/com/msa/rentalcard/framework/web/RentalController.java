@@ -1,8 +1,7 @@
-package com.inflearn.rentalcard.framework.web;
+package com.msa.rentalcard.framework.web;
 
-import com.inflearn.rentalcard.application.usecase.*;
-
-import com.inflearn.rentalcard.framework.web.dto.*;
+import com.msa.rentalcard.application.usecase.*;
+import com.msa.rentalcard.framework.web.dto.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

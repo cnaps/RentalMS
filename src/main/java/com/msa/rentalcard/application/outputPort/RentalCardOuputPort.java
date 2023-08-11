@@ -1,6 +1,6 @@
-package com.inflearn.rentalcard.application.outputPort;
+package com.msa.rentalcard.application.outputPort;
 
-import com.inflearn.rentalcard.domain.model.RentalCard;
+import com.msa.rentalcard.domain.model.RentalCard;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,7 +1,6 @@
-package com.inflearn.rentalcard.framework.kafkaAdapter;
+package com.msa.rentalcard.framework.kafkaAdapter;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -18,8 +17,8 @@ public class RentalEventConsumers {
 
     public static final String TOPIC = "topic_kafka";
 
-    @KafkaListener(topics = "exam")
-    public void consume(String message) throws IOException {
-        System.out.printf("Consumed message : %s%n", message);
-    }
+//    @KafkaListener(topics = "exam",groupId = "foo0")
+//    public void consume(String message) throws IOException {
+//        System.out.printf("Consumed message : %s%n", message);
+//    }
 }

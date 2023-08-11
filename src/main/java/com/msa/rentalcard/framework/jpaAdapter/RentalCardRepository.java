@@ -1,8 +1,8 @@
-package com.inflearn.rentalcard.framework.jpaAdapter;
+package com.msa.rentalcard.framework.jpaAdapter;
 
-import com.inflearn.rentalcard.domain.model.RentalCard;
-import com.inflearn.rentalcard.domain.model.vo.IDName;
-import com.inflearn.rentalcard.domain.model.vo.RentalCardNo;
+import com.msa.rentalcard.domain.model.RentalCard;
+import com.msa.rentalcard.domain.model.vo.IDName;
+import com.msa.rentalcard.domain.model.vo.RentalCardNo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

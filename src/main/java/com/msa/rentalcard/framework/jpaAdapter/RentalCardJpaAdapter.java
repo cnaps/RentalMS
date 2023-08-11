@@ -1,7 +1,7 @@
-package com.inflearn.rentalcard.framework.jpaAdapter;
+package com.msa.rentalcard.framework.jpaAdapter;
 
-import com.inflearn.rentalcard.application.outputPort.RentalCardOuputPort;
-import com.inflearn.rentalcard.domain.model.RentalCard;
+import com.msa.rentalcard.application.outputPort.RentalCardOuputPort;
+import com.msa.rentalcard.domain.model.RentalCard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

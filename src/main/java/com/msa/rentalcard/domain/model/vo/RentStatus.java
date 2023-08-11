@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.domain.model.vo;
+package com.msa.rentalcard.domain.model.vo;
 
 public enum RentStatus {
     RENT_AVAILABLE,

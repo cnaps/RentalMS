@@ -1,9 +1,9 @@
-package com.inflearn.rentalcard.domain;
-import com.inflearn.rentalcard.domain.model.RentalCard;
-import com.inflearn.rentalcard.domain.model.vo.IDName;
-import com.inflearn.rentalcard.domain.model.vo.Item;
+package com.msa.rentalcard.domain;
+import com.msa.rentalcard.domain.model.RentalCard;
+import com.msa.rentalcard.domain.model.vo.IDName;
+import com.msa.rentalcard.domain.model.vo.Item;
 
-import com.inflearn.rentalcard.framework.jpaAdapter.RentalCardRepository;
+import com.msa.rentalcard.framework.jpaAdapter.RentalCardRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

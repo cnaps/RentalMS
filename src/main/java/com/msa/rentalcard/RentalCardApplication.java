@@ -1,7 +1,7 @@
-package com.inflearn.rentalcard;
+package com.msa.rentalcard;
 
-import com.inflearn.rentalcard.domain.model.RentalCard;
-import com.inflearn.rentalcard.domain.model.vo.Item;
+import com.msa.rentalcard.domain.model.RentalCard;
+import com.msa.rentalcard.domain.model.vo.Item;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

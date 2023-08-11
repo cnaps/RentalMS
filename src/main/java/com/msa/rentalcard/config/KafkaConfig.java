@@ -1,6 +1,6 @@
-package com.inflearn.rentalcard.config;
+package com.msa.rentalcard.config;
 
-import com.inflearn.rentalcard.domain.model.event.ItemRented;
+import com.msa.rentalcard.domain.model.event.ItemRented;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;

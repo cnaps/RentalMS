@@ -1,17 +1,12 @@
-package com.inflearn.rentalcard.application.inputPort;
-
-import java.time.LocalDate;
-import java.util.List;
+package com.msa.rentalcard.application.inputPort;
 
 import javax.transaction.Transactional;
 
-import com.inflearn.rentalcard.domain.model.vo.RentItem;
-import com.inflearn.rentalcard.framework.jpaAdapter.RentalCardRepository;
+import com.msa.rentalcard.framework.jpaAdapter.RentalCardRepository;
+import com.msa.rentalcard.domain.model.RentalCard;
 import org.springframework.stereotype.Service;
 
-import com.inflearn.rentalcard.domain.model.RentalCard;
-import com.inflearn.rentalcard.domain.model.vo.IDName;
-import com.inflearn.rentalcard.domain.model.vo.Item;
+import com.msa.rentalcard.domain.model.vo.IDName;
 
 import lombok.RequiredArgsConstructor;
 

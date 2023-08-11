@@ -1,11 +1,9 @@
-package com.inflearn.rentalcard.framework.web.dto;
+package com.msa.rentalcard.framework.web.dto;
 
-import com.inflearn.rentalcard.domain.model.RentalCard;
+import com.msa.rentalcard.domain.model.RentalCard;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Optional;
 
 @Getter @Setter
 public class RentalResultOuputDTO {

@@ -1,4 +1,4 @@
-package com.inflearn.rentalcard.application.query;
+package com.msa.rentalcard.application.query;
 
 public class ListRentalItemQuery {
 }

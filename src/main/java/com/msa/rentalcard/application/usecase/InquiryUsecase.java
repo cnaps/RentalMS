@@ -1,12 +1,9 @@
-package com.inflearn.rentalcard.application.usecase;
+package com.msa.rentalcard.application.usecase;
 
-import com.inflearn.rentalcard.domain.model.RentalCard;
-import com.inflearn.rentalcard.domain.model.vo.RentItem;
-import com.inflearn.rentalcard.domain.model.vo.ReturnItem;
-import com.inflearn.rentalcard.framework.web.dto.RentItemOutputDTO;
-import com.inflearn.rentalcard.framework.web.dto.RentalCardOutputDTO;
-import com.inflearn.rentalcard.framework.web.dto.RetrunItemOupputDTO;
-import com.inflearn.rentalcard.framework.web.dto.UserInputDTO;
+import com.msa.rentalcard.framework.web.dto.RentItemOutputDTO;
+import com.msa.rentalcard.framework.web.dto.RentalCardOutputDTO;
+import com.msa.rentalcard.framework.web.dto.RetrunItemOupputDTO;
+import com.msa.rentalcard.framework.web.dto.UserInputDTO;
 
 import java.util.List;
 

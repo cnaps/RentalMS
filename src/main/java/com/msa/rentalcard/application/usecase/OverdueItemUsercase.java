@@ -1,7 +1,7 @@
-package com.inflearn.rentalcard.application.usecase;
+package com.msa.rentalcard.application.usecase;
 
-import com.inflearn.rentalcard.framework.web.dto.RentalCardOutputDTO;
-import com.inflearn.rentalcard.framework.web.dto.UserItemInputDTO;
+import com.msa.rentalcard.framework.web.dto.RentalCardOutputDTO;
+import com.msa.rentalcard.framework.web.dto.UserItemInputDTO;
 
 public interface OverdueItemUsercase {
     public RentalCardOutputDTO overDueItem(UserItemInputDTO rental) throws Exception;
