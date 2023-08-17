@@ -45,7 +45,6 @@ public class RentalCard {
         return this;
     }
 
-
     public RentalCard returnItem(Item item,LocalDate returnDate) throws Exception {
         RentItem rentedItem = this.rentItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
         calculateLateFee(rentedItem,returnDate);
@@ -70,27 +69,26 @@ public class RentalCard {
     }
 
     private RentalCard calculateLateFee(RentItem item, LocalDate returnDate){
-        final Integer[] point = {this.totalLateFee.getPoint()};
-        point[0] += Period.between(item.getOverdueDate(),returnDate).getDays() * 10 ;
-        LateFee lateFee = this.totalLateFee.addPoint(point[0]);
-        this.setTotalLateFee(lateFee);
+        if (returnDate.compareTo(item.getOverdueDate())>0) {
+            Integer point = 0;
+            point += Period.between(item.getOverdueDate(), returnDate).getDays() * 10;
+            LateFee lateFee = this.totalLateFee.addPoint(point);
+            this.setTotalLateFee(lateFee);
+        }
         return this;
     }
     public RentalCard calculateLateFee(){
-        final Integer[] point = {this.totalLateFee.getPoint()};
         this.rentItemList.forEach(new Consumer<RentItem>() {
                                         @Override
                                         public void accept(RentItem rentItem) {
                                            if(rentItem.getOverdueDate() != null)
                                            {
-                                              point[0] += Period.between(rentItem.getOverdueDate(),LocalDate.now()).getDays() * 10 ;
+                                              calculateLateFee(rentItem,LocalDate.now());
                                            }
                                         }
                                     }
 
         );
-        LateFee lateFee = this.totalLateFee.addPoint(point[0]);
-        this.setTotalLateFee(lateFee);
         return this;
     }
 
@@ -110,9 +108,6 @@ public class RentalCard {
         return this;
     }
 
-//    public RentalCard returnItem(){
-//
-//    }
 
     public void addRentalItem(RentItem rentItem){
         this.getRentItemList().add(rentItem);

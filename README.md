@@ -42,7 +42,7 @@
   - 도커 컨테이너 이미지 생성
   
     ```
-     docker build -t my-spring-boot-app . 
+     docker build -t rental-ms:0.0.1 . 
     ```
 
     ```
@@ -52,7 +52,7 @@
   - 도커 컨테이너 실행
 
     ``` 
-    docker run -8080:8080 my-spring-boot-app 
+    docker run --name rentalMS -p 8080:8080 rental-ms:0.0.1
     ```
 
 - 카프카 컨테이너 생성
