@@ -28,6 +28,11 @@ public class RentItem {
     }
 
     public static RentItem sample(){
-        return new RentItem(Item.sample(),LocalDate.now(),false,LocalDate.now().plusDays(14));
+        RentItem rentalItem = new RentItem();
+        rentalItem.setItem(Item.sample());
+        rentalItem.setOverdued(false);
+        rentalItem.setRentDate(LocalDate.now());
+        rentalItem.setOverdueDate(rentalItem.getRentDate().plusDays(14));
+        return  rentalItem;
     }
 }
