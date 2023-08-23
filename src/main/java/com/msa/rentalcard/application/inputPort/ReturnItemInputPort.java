@@ -35,6 +35,8 @@ public class ReturnItemInputPort implements ReturnItemUsercase {
 
         rental = rentalCardOuputPort.save(rental);
 
+        //반납 이벤트 발행 필요
+
         return RentalCardOutputDTO.mapToDTO(rental);
       }
 
