@@ -48,7 +48,7 @@ public class RentalController {
     private final OverdueItemUsercase overdueItemUsercase;
     private final CreateRentalCardUsecase createRentalCardUsecase;
     private final InquiryUsecase inquiryUsecase;
-
+    private final ClearOverdueItemUsecase clearOverdueItemUsecase;
 
     @ApiOperation(value = "도서카드 생성",notes = "사용자정보 -> 도서카드정보")
     @PostMapping("/RentalCard/")
@@ -99,6 +99,13 @@ public class RentalController {
     public ResponseEntity<RentalCardOutputDTO> overdueItem(@RequestBody UserItemInputDTO userItemInputDTO) throws Exception {
         RentalCardOutputDTO rentalCardOutputDTO = overdueItemUsercase.overDueItem(userItemInputDTO);
         return ResponseEntity.ok(rentalCardOutputDTO);
+    }
+
+    @ApiOperation(value = "연체해제기능",notes = "사용자정보,포인트 -> 도서카드정보 ")
+    @PostMapping("/RentalCard/clearoverdue")
+    public ResponseEntity<RentalResultOuputDTO> clearOverdueItem(@RequestBody ClearOverdueInfoDTO clearOverdueInfoDTO) throws Exception {
+        RentalResultOuputDTO rentalResultOuputDTO = clearOverdueItemUsecase.clearOverdue(clearOverdueInfoDTO);
+        return ResponseEntity.ok(rentalResultOuputDTO);
     }
 
 }

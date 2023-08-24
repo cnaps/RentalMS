@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RentalCardOuputPort {
-    public RentalCard loadRentalCard(String userId);
-    public RentalCard save(RentalCard rentalCard);
+    RentalCard loadRentalCard(String userId);
+    RentalCard save(RentalCard rentalCard);
 }
