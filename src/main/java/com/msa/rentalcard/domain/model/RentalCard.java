@@ -35,20 +35,20 @@ public class RentalCard {
         rentalCard.setRentalCardId(RentalCardNo.createRentalCardNo());
         rentalCard.setMember(creater);
         rentalCard.setRentStatus(RentStatus.RENT_AVAILABLE);
-        rentalCard.setTotalLateFee(LateFee.createLateFee());
+        rentalCard.setTotalLateFee(LateFee.creatLateFee());
         return rentalCard; 
     }
 
     public RentalCard rentItem(Item item) throws Exception {
         checkRentalAvailable();
-        this.addRentalItem(RentItem.createRentalItem(item));
+        this.addRentalItem(RentItem.createRentItem(item));
         return this;
     }
 
     public RentalCard returnItem(Item item,LocalDate returnDate) throws Exception {
         RentItem rentedItem = this.rentItemList.stream().filter(i -> i.getItem().equals(item)).findFirst().get();
         calculateLateFee(rentedItem,returnDate);
-        this.addReturnItem(ReturnItem.createRetunItem(rentedItem));
+        this.addReturnItem(ReturnItem.creatReturnItem(rentedItem));
         this.removeRentalItem(rentedItem);
         return this;
     }
@@ -92,39 +92,36 @@ public class RentalCard {
     }
 
     public Integer makeAvailableRental(Integer point) throws Exception {
-        // 연체비 계산하기
-        if ((long) this.rentItemList.size() != 0) throw new IllegalStateException("모든 도서가 반납된 후 정지를 해제할 수 있습니다.");
-        LateFee totalLateFee = this.getTotalLateFee();
-        if (totalLateFee.getPoint() - point != 0) throw new IllegalStateException("해당 포인트로 연체료를 삭감할수 없습니다.");
-        LateFee remainLateFee = totalLateFee.removePoint(point);
-        if (remainLateFee.getPoint() == 0 )
+        if (this.rentItemList.size() != 0) throw new IllegalArgumentException("모든 도서가 반납되어야 정지를 해제 할 수 있습니다.");
+        if (this.getTotalLateFee().getPoint() != point) throw  new IllegalArgumentException("해당 포인트로 연체를 해제할 수 없습니다.");
+        this.setTotalLateFee(totalLateFee.removePoint(point));
+        if (this.getTotalLateFee().getPoint() == 0)
         {
             this.rentStatus = RentStatus.RENT_AVAILABLE;
         }
-        this.setTotalLateFee(remainLateFee);
-        return point;
+        return this.getTotalLateFee().getPoint();
     }
 
 
-    public void addRentalItem(RentItem rentItem){
+    private void addRentalItem(RentItem rentItem){
         this.getRentItemList().add(rentItem);
     }
 
-    public void addReturnItem(ReturnItem returnItem){
+    private void addReturnItem(ReturnItem returnItem){
         this.getReturnItemList().add(returnItem);
     }
 
-    public void removeRentalItem(RentItem rentItem)
+    private void removeRentalItem(RentItem rentItem)
     {
         this.getRentItemList().remove(rentItem);
     }
+
     public static RentalCard sample(){
         RentalCard rentalCard = new RentalCard();
         rentalCard.setRentalCardId(RentalCardNo.createRentalCardNo());
         rentalCard.setMember(IDName.sample());
         rentalCard.setRentStatus(RentStatus.RENT_AVAILABLE);
         rentalCard.setTotalLateFee(LateFee.sample());
-        //rentalCard.getRentalItemList().add(RentalItem.sample());
 
         return rentalCard;
     }

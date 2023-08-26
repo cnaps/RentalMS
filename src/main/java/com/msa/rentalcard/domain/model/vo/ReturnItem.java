@@ -18,11 +18,12 @@ public class ReturnItem {
     private RentItem item;
     private LocalDate returnDate;
 
-    public static ReturnItem sample(){
-        return new ReturnItem(RentItem.sample(),LocalDate.now());
+    public static ReturnItem creatReturnItem(RentItem rentItem){
+        return new ReturnItem(rentItem,LocalDate.now());
     }
 
-    public static ReturnItem createRetunItem(RentItem rentItem){
-        return new ReturnItem(rentItem,LocalDate.now());
+
+    private static ReturnItem sample(){
+        return ReturnItem.creatReturnItem(RentItem.sample());
     }
 }

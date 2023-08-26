@@ -18,23 +18,19 @@ public class RentalCardNo implements Serializable {
     private String no;
 
     public static RentalCardNo createRentalCardNo(){
-
         UUID uuid = UUID.randomUUID();
         String year = String.valueOf(LocalDate.now().getYear());
-        String str = year + '-' + uuid.toString();
-        RentalCardNo rentalCardNo1 = new RentalCardNo();
-
-        rentalCardNo1.setNo(str);
-        return rentalCardNo1;
+        String str = year + '-' + uuid;
+        RentalCardNo rentalCardNo = new RentalCardNo();
+        rentalCardNo.setNo(str);
+        return rentalCardNo;
     }
 
     public static RentalCardNo sample(){
-        return new RentalCardNo("2023-00001");
+        return RentalCardNo.createRentalCardNo();
     }
 
-
-    public static void main(String[] args) {
-        System.out.printf(createRentalCardNo().toString());
-        System.out.printf(sample().toString());
+    public static void main(String[] args){
+        System.out.println(RentalCardNo.sample());
     }
 }

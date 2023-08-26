@@ -13,26 +13,22 @@ import javax.persistence.Embeddable;
 @Getter
 public class LateFee {
     private Integer point;
-
-    public LateFee addPoint(Integer lateFee)
-    {
-        return new LateFee(this.point + lateFee);
+    public LateFee addPoint(Integer point){
+        return new LateFee(this.point + point);
     }
 
-    public LateFee removePoint(Integer lateFee) throws Exception {
-        if (lateFee > this.point) {
-            throw new Exception("기존 가진 point보다 작어 삭제할 수 없습니다.");
+    public LateFee removePoint(Integer point) throws Exception {
+        if(point > this.point){
+            throw new Exception("보유한 포이트보다 커서 삭제할수 없습니다.");
         }
-        return new LateFee(this.point - lateFee);
-    }
-    public static LateFee sample(){
-        return new LateFee(0);
+        return new LateFee(this.point-point);
     }
 
-    public static LateFee createLateFee()
-    {
-        LateFee lateFee = new LateFee();
-        lateFee.point = 0;
-        return lateFee;
+    public static LateFee sample(){
+        return new LateFee(100);
+    }
+
+    public static LateFee creatLateFee(){
+        return new LateFee(0);
     }
 }
