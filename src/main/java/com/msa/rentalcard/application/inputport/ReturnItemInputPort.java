@@ -1,4 +1,4 @@
-package com.msa.rentalcard.application.inputPort;
+package com.msa.rentalcard.application.inputport;
 
 import com.msa.rentalcard.framework.web.dto.RentalCardOutputDTO;
 import com.msa.rentalcard.application.usecase.ReturnItemUsercase;
@@ -6,7 +6,7 @@ import com.msa.rentalcard.domain.model.RentalCard;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.msa.rentalcard.application.outputPort.RentalCardOuputPort;
+import com.msa.rentalcard.application.outputport.RentalCardOuputPort;
 import com.msa.rentalcard.domain.model.vo.Item;
 import com.msa.rentalcard.framework.web.dto.UserItemInputDTO;
 

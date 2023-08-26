@@ -1,8 +1,9 @@
-package com.msa.rentalcard.framework.kafkaAdapter;
+package com.msa.rentalcard.framework.kafkaadapter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.msa.rentalcard.application.outputPort.ItemRentedOuputPort;
-import com.msa.rentalcard.domain.model.event.ItemRented;
+import com.msa.rentalcard.application.outputport.ItemReturnedOutPutPort;
+import com.msa.rentalcard.domain.model.event.ItemReturned;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.slf4j.Logger;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class RentalProducer implements ItemRentedOuputPort {
+public class ReturnPoducer implements ItemReturnedOutPutPort {
 
     private final Logger log = LoggerFactory.getLogger(RentalProducer.class);
 
@@ -20,20 +21,13 @@ public class RentalProducer implements ItemRentedOuputPort {
     private static final String TOPIC_CATALOG = "topic_catalog";
     private static final String TOPIC_POINT = "topic_point";
 
-    private final KafkaTemplate<String, ItemRented> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     private KafkaProducer<String, String> producer;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public void sendMessage(String message) {
-        System.out.printf("Produce message : %s%n", message);
-    //    this.kafkaTemplate.send(TOPIC, message);
-    }
-
     @Override
-    public void occurEvent(ItemRented rentalItemEvent) {
- //       String msg = objectMapper.writeValueAsString(rentalItemEvent);
-        this.kafkaTemplate.send(TOPIC, rentalItemEvent);
+    public void occurEvent(ItemReturned itemReturnedEvent) throws JsonProcessingException {
+       this.kafkaTemplate.send(TOPIC,objectMapper.writeValueAsString(itemReturnedEvent));
     }
-
 }

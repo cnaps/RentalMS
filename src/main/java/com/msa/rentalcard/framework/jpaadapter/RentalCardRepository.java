@@ -1,4 +1,4 @@
-package com.msa.rentalcard.framework.jpaAdapter;
+package com.msa.rentalcard.framework.jpaadapter;
 
 import com.msa.rentalcard.domain.model.RentalCard;
 import com.msa.rentalcard.domain.model.vo.IDName;

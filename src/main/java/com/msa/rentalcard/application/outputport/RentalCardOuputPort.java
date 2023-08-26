@@ -1,4 +1,4 @@
-package com.msa.rentalcard.application.outputPort;
+package com.msa.rentalcard.application.outputport;
 
 import com.msa.rentalcard.domain.model.RentalCard;
 import org.springframework.stereotype.Repository;

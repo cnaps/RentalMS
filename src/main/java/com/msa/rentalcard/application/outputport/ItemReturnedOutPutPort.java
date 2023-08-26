@@ -1,4 +1,4 @@
-package com.msa.rentalcard.application.outputPort;
+package com.msa.rentalcard.application.outputport;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.msa.rentalcard.domain.model.event.ItemReturned;

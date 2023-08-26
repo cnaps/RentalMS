@@ -1,6 +1,6 @@
-package com.msa.rentalcard.application.inputPort;
+package com.msa.rentalcard.application.inputport;
 
-import com.msa.rentalcard.application.outputPort.RentalCardOuputPort;
+import com.msa.rentalcard.application.outputport.RentalCardOuputPort;
 import com.msa.rentalcard.application.usecase.OverdueItemUsercase;
 import com.msa.rentalcard.domain.model.RentalCard;
 import com.msa.rentalcard.domain.model.vo.Item;
