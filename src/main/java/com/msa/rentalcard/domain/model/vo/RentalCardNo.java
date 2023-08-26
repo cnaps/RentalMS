@@ -17,12 +17,13 @@ public class RentalCardNo implements Serializable {
 
     private String no;
 
-    static UUID uuid = UUID.randomUUID();
-
     public static RentalCardNo createRentalCardNo(){
+
+        UUID uuid = UUID.randomUUID();
         String year = String.valueOf(LocalDate.now().getYear());
-        String str = year + '-' +uuid.toString();
+        String str = year + '-' + uuid.toString();
         RentalCardNo rentalCardNo1 = new RentalCardNo();
+
         rentalCardNo1.setNo(str);
         return rentalCardNo1;
     }
@@ -30,6 +31,7 @@ public class RentalCardNo implements Serializable {
     public static RentalCardNo sample(){
         return new RentalCardNo("2023-00001");
     }
+
 
     public static void main(String[] args) {
         System.out.printf(createRentalCardNo().toString());

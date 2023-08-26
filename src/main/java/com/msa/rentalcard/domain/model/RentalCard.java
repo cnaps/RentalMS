@@ -17,6 +17,7 @@ public class RentalCard {
 
     @EmbeddedId
     private RentalCardNo rentalCardId;
+
     @Embedded
     private IDName member;
     private RentStatus rentStatus;
