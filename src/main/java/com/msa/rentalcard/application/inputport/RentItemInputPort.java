@@ -1,6 +1,6 @@
 package com.msa.rentalcard.application.inputport;
 
-import com.msa.rentalcard.application.outputport.ItemRentedOuputPort;
+import com.msa.rentalcard.application.outputport.EventOuputPort;
 import com.msa.rentalcard.domain.model.event.ItemRented;
 import com.msa.rentalcard.framework.web.dto.RentalCardOutputDTO;
 import com.msa.rentalcard.domain.model.RentalCard;
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class RentItemInputPort implements RentItemUsecase{
 
     private final RentalCardOuputPort rentalCardOuputPort;
-    private final ItemRentedOuputPort rentedOuputPort;
+    private final EventOuputPort rentedOuputPort;
     @Override
     public RentalCardOutputDTO rentItem(UserItemInputDTO rental) throws Exception {
         // Outport를 사용해서 해당 사용자의 RentalCard 검색해서
@@ -39,7 +39,7 @@ public class RentItemInputPort implements RentItemUsecase{
 
         userRentalCard = rentalCardOuputPort.save(userRentalCard);
 
-        rentedOuputPort.occurEvent(new ItemRented(userRentalCard.getMember(),newItem,10L));
+        rentedOuputPort.occurRentalEvent(new ItemRented(userRentalCard.getMember(),newItem,10L));
 
         return RentalCardOutputDTO.mapToDTO(userRentalCard);
 

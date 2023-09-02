@@ -1,5 +1,7 @@
 package com.msa.rentalcard.application.inputport;
 
+import com.msa.rentalcard.application.outputport.EventOuputPort;
+import com.msa.rentalcard.domain.model.event.ItemReturned;
 import com.msa.rentalcard.framework.web.dto.RentalCardOutputDTO;
 import com.msa.rentalcard.application.usecase.ReturnItemUsercase;
 import com.msa.rentalcard.domain.model.RentalCard;
@@ -20,6 +22,7 @@ import java.time.LocalDate;
 public class ReturnItemInputPort implements ReturnItemUsercase {
 
     private final RentalCardOuputPort rentalCardOuputPort;
+    private final EventOuputPort eventOuputPort;
 
     @Override
     public RentalCardOutputDTO returnItem(UserItemInputDTO returnDto) throws Exception {
@@ -31,14 +34,18 @@ public class ReturnItemInputPort implements ReturnItemUsercase {
         
         if (rental == null) new IllegalArgumentException("해당 카드가 존재하지 않습니다.");
 
-        rental = rental.returnItem(new Item(returnDto.getItemId(),returnDto.getItemTitle()), LocalDate.now());
+
+        Item returnItem = new Item(returnDto.getItemId(), returnDto.getItemTitle());
+        rental = rental.returnItem(returnItem, LocalDate.now());
 
         rental = rentalCardOuputPort.save(rental);
 
-        //반납 이벤트 발행 필요
+        //반납 이벤트 발행
+        eventOuputPort.occurReturnEvent(new ItemReturned(rental.getMember(),returnItem,10L));
+
 
         return RentalCardOutputDTO.mapToDTO(rental);
       }
 
-    
+
 }
