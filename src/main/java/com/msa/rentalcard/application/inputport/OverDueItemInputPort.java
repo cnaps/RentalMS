@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-
 public class OverDueItemInputPort implements OverdueItemUsercase {
 
     private final RentalCardOuputPort rentalCardOuputPort;
@@ -26,7 +25,6 @@ public class OverDueItemInputPort implements OverdueItemUsercase {
         if (rental == null) new IllegalArgumentException("해당 카드가 존재하지 않습니다.");
 
         rental = rental.overdueItem(new Item(returnDto.getItemId(),returnDto.getItemTitle()));
-
         rental = rentalCardOuputPort.save(rental);
 
         return RentalCardOutputDTO.mapToDTO(rental);

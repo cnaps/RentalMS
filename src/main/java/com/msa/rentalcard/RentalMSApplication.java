@@ -9,11 +9,11 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
-public class RentalCardApplication {
+public class RentalMSApplication {
 
     public static void main(String[] args) throws Exception {
         domainTest();
-        SpringApplication.run(RentalCardApplication.class, args);
+        SpringApplication.run(RentalMSApplication.class, args);
     }
 
     public static void domainTest() throws Exception {
